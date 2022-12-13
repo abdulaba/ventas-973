@@ -1,0 +1,11 @@
+<h1>Producto</h1>
+<h4><%= @product.name %></h4>
+<p><%= @product.description %></p>
+<p><%= @product.price %></p>
+<%= link_to "Volver", products_path %> 
+<% if user_signed_in? %>
+  <% if current_user.id == @product.user_id %>
+    <%= link_to "EDit", edit_product_path(@product) %> 
+    <%= link_to "Elimnar", product_path(@product), data: {turbo_method: :delete, turbo_confirm: "Esta seguro/a" } %>
+  <% end %>
+<% end %>
